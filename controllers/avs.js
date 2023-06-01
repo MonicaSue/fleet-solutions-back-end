@@ -11,8 +11,19 @@ async function create (req, res) {
   }
 }
 
+async function index (req, res) {
+  try {
+    const avs = await Av.findAll()
+    res.status(200).json(avs)
+  } catch (error) {
+    res.status(500).json({ err: error })
+    console.log(error)
+  }
+}
+
+
 
 module.exports = {
   create,
-  
+  index,
 }

@@ -12,7 +12,7 @@ const { decodeUserFromToken, checkAuth } = middleware
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-
+router.get('/', checkAuth, avsCtrl.index)
 router.post('/', checkAuth, avsCtrl.create)
 
 
