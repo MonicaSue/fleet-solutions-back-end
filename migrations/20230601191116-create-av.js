@@ -2,27 +2,26 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Profiles', {
+    await queryInterface.createTable('Avs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      vehicleNo: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      photo: Sequelize.STRING,
-      role: {
-        type: Sequelize.ENUM('Admin', 'Driver', 'Mechanic'),
-        defaultValue: 'Admin'
+      status: {
+        type: Sequelize.ENUM('Active', 'Inactive', 'Under Maintenance', 'Retired'),
+        defaultValue: 'Active'
       },
-      userId: {
+      profileId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Users',
+          model: 'Profiles',
           key: 'id',
         },
       },
@@ -37,6 +36,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Profiles');
+    await queryInterface.dropTable('Avs');
   }
 };
