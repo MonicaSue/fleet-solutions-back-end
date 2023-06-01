@@ -21,9 +21,24 @@ async function index (req, res) {
   }
 }
 
+async function update (req, res) {
+  try {
+    const av = await Av.findByPk(req.params.id)
+
+    av.set(req.body)
+    await av.save()
+
+    res.status(200).json(av)
+  } catch (error) {
+    res.status(500).json({ err: error })
+    console.log(error)
+  }
+}
+
 
 
 module.exports = {
   create,
   index,
+  update,
 }
