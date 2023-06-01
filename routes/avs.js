@@ -15,5 +15,6 @@ router.use(decodeUserFromToken)
 router.get('/', checkAuth, avsCtrl.index)
 router.post('/', checkAuth, avsCtrl.create)
 router.put('/:id', checkAuth, avsCtrl.update)
+router.delete('/:id', checkAuth, avsCtrl.delete)
 
 module.exports = router

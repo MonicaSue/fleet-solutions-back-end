@@ -35,10 +35,22 @@ async function update (req, res) {
   }
 }
 
+async function deleteAv (req, res) {
+  try {
+    const av = await Av.findByPk(req.params.id)
+    await av.destroy()
+    res.status(200).json(av)
+  } catch (error) {
+    res.status(500).json({ err: error })
+    console.log(error)
+  }
+}
+
 
 
 module.exports = {
   create,
   index,
   update,
+  delete: deleteAv,
 }
