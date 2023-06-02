@@ -14,10 +14,6 @@ module.exports = {
         allowNull: false,
       },
       photo: Sequelize.STRING,
-      role: {
-        type: Sequelize.ENUM('Admin', 'Driver', 'Mechanic'),
-        defaultValue: 'Admin'
-      },
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,

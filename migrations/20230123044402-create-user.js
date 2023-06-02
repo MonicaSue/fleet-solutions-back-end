@@ -22,6 +22,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      role: {
+        type: Sequelize.ENUM('Admin', 'Driver', 'Mechanic'),
+        defaultValue: 'Admin'
+      },
       isActive: {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
