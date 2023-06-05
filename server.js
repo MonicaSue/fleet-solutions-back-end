@@ -9,6 +9,7 @@ const formData = require('express-form-data')
 const profilesRouter = require('./routes/profiles.js')
 const authRouter = require('./routes/auth.js')
 const avsRouter = require('./routes/avs.js')
+const dashboardRouter = require('./routes/dashboard.js')
 
 // create the express app
 const app = express()
@@ -23,6 +24,7 @@ app.use(formData.parse())
 app.use('/api/profiles', profilesRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/avs', avsRouter)
+app.use('/api/dashboard', dashboardRouter)
 
 // handle 404 errors
 app.use(function (req, res, next) {
