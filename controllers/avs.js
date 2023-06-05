@@ -21,6 +21,16 @@ async function index (req, res) {
   }
 }
 
+async function show(req, res) {
+  try {
+    const av = await Av.findByPk(req.params.id)
+    res.status(200).json(av)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error)
+  }
+}
+
 async function update (req, res) {
   try {
     const av = await Av.findByPk(req.params.id)
@@ -51,6 +61,7 @@ async function deleteAv (req, res) {
 module.exports = {
   create,
   index,
+  show,
   update,
   delete: deleteAv,
 }

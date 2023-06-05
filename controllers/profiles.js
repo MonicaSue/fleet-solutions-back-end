@@ -1,10 +1,15 @@
-const { Profile } = require('../models')
+const { Profile, User } = require('../models')
 const cloudinary = require('cloudinary').v2
 
 async function index(req, res) {
   try {
+    if (req.user.role === 'Admin') {
     const profiles = await Profile.findAll()
+    console.log('user consolelog', req.user.role)
     res.json(profiles)
+    } else {
+      throw new Error('Access Denied: User trying to access profiles')
+    }
   } catch (err) {
     console.log(err)
     res.status(500).json(err)
