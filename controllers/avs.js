@@ -1,4 +1,4 @@
-const { Av } = require('../models')
+const { Av, Performance, Maintenance } = require('../models')
 
 async function create (req, res) {
   try {
@@ -56,6 +56,29 @@ async function deleteAv (req, res) {
   }
 }
 
+async function createPerformance (req, res) {
+  try {
+    req.body.avId = req.params.id
+    req.body.profileId = req.user.profile.id
+    const performance = await Performance.create(req.body)
+    res.status(200).json(performance)
+  } catch (error) {
+    res.status(500).json({ err: error })
+    console.log(error)
+  }
+}
+
+async function createMaintenance (req, res) {
+  try {
+    req.body.avId = req.params.id
+    req.body.profileId = req.user.profile.id
+    const maintenance = await Maintenance.create(req.body)
+    res.status(200).json(maintenance)
+  } catch (error) {
+    res.status(500).json({ err: error })
+    console.log(error)
+  }
+}
 
 
 module.exports = {
@@ -64,4 +87,6 @@ module.exports = {
   show,
   update,
   delete: deleteAv,
+  createPerformance,
+  createMaintenance,
 }

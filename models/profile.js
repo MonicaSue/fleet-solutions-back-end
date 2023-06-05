@@ -15,6 +15,16 @@ module.exports = (sequelize, DataTypes) => {
         as: 'avs',
         foreignKey: 'profileId'
       })
+
+      Profile.hasMany(models.Performance, {
+        as: 'performances',
+        foreignKey: 'profileId'
+      })
+
+      Profile.hasMany(models.Maintenance, {
+        as: 'maintenances',
+        foreignKey: 'profileId'
+      })
     }
   }
 

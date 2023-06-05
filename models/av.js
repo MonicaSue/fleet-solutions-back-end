@@ -13,6 +13,16 @@ module.exports = (sequelize, DataTypes) => {
       Av.belongsTo(models.Profile, {
         foreignKey: 'profileId',
       })
+
+      Av.hasMany(models.Performance, {
+        foreignKey: 'avId',
+        as: 'performances'
+      })
+
+      Av.hasMany(models.Maintenance, {
+        foreignKey: 'avId',
+        as: 'maintenances'
+      })
     }
   }
   Av.init({

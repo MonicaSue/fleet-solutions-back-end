@@ -14,6 +14,8 @@ const { decodeUserFromToken, checkAuth } = middleware
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, avsCtrl.index)
 router.post('/', checkAuth, avsCtrl.create)
+router.post('/:id/performances', checkAuth, avsCtrl.createPerformance)
+router.post('/:id/maintenances', checkAuth, avsCtrl.createMaintenance)
 router.get('/:id', checkAuth, avsCtrl.show)
 router.put('/:id', checkAuth, avsCtrl.update)
 router.delete('/:id', checkAuth, avsCtrl.delete)
