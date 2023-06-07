@@ -85,6 +85,19 @@ async function createMaintenance (req, res) {
   }
 }
 
+async function updateMaintenance (req, res) {
+  try {
+    const maintenance = await Maintenance.findByPk(req.params.maintenanceId)
+    maintenance.set(req.body)
+    await maintenance.save()
+
+    res.status(200).json(maintenance)
+  } catch (error) {
+    res.status(500).json({ err: error })
+    console.log(error)
+  }
+}
+
 
 module.exports = {
   create,
@@ -94,4 +107,5 @@ module.exports = {
   delete: deleteAv,
   createPerformance,
   createMaintenance,
+  updateMaintenance,
 }
