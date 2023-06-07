@@ -26,14 +26,16 @@ module.exports = (sequelize, DataTypes) => {
       partsCost: {
         type: DataTypes.FLOAT,
         allowNull: false,
+        defaultValue: 0, //added
       },
       laborCost: {
         type: DataTypes.FLOAT,
         allowNull: false,
+        defaultValue: 0, //added
       },
       date: {
-        type: DataTypes.DATE,
-        allowNull: false,
+        type: DataTypes.STRING,
+        allowNull: true, //removed
       },
       notes: DataTypes.STRING,
       maintenanceStatus: {
